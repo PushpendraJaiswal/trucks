@@ -11,3 +11,4 @@ phases:
 artifacts:
   files:
     - target/trucks.war
+  discard-paths: yes
