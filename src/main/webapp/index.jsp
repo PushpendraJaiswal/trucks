@@ -5,10 +5,10 @@
 <BODY BGCOLOR="FFFFFF">
 <CENTER><IMG SRC="clouds.jpg" ALIGN="BOTTOM"> </CENTER>
 <HR>
-<a href="http://www.yahoo.com">Link Name</a>
+<a href="http://www.google.com">Link Name</a>
 is a link to another nifty site
 
-<H1>Yahoo!! </H1>
+<H1>Google!! </H1>
 <H2>You can use me for email </H2>
 
 Send me mail at <a href="mailto:support@yahoo.com">
