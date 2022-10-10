@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trucks-deployment
+  namespace: default
+#  labels:
+#    app: trucks
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: trucks
+  template:
+    metadata:
+      labels:
+        app: trucks
+    spec:
+      containers:
+      - name: trucks-container
+        image: 500208773665.dkr.ecr.us-east-1.amazonaws.com/trucks:1.0
+        ports:
+        - containerPort: 80
