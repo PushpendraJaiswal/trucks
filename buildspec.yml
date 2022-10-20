@@ -1,4 +1,5 @@
 ---
+version: 0.2
 phases:
   install:
     runtime-versions:
@@ -9,11 +10,11 @@ phases:
     - mvn clean package
     - echo Logging in to Amazon ECR....
     - aws --version
-    - REPOSITORY_URI=500208773665.dkr.ecr.us-east-1.amazonaws.com/trucks
     # update the following line with your own region
     - $(aws ecr get-login --region us-east-1)
     - COMMIT_HASH=trucks
     - IMAGE_TAG=${COMMIT_HASH:=latest}
+    - REPOSITORY_URI=500208773665.dkr.ecr.us-east-1.amazonaws.com/trucks
   build:
     commands:
     - echo Build started on `date`
@@ -33,3 +34,4 @@ phases:
 artifacts:
   files:
     - target/trucks.war
+  discard-paths: yes
