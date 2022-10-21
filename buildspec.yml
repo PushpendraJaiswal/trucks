@@ -16,6 +16,10 @@ phases:
     - COMMIT_HASH=trucks
     - IMAGE_TAG=${COMMIT_HASH:=latest}
     - REPOSITORY_URI=500208773665.dkr.ecr.us-east-1.amazonaws.com/trucks
+    artifacts:
+      files:
+        - target/trucks.war
+      discard-paths: yes
   build:
     commands:
     - echo Build started on `date`
@@ -35,7 +39,3 @@ phases:
     - docker push $REPOSITORY_URI:latest
     - docker push $REPOSITORY_URI:$IMAGE_TAG
     - echo Writing image definitions file...
-artifacts:
-  files:
-    - target/trucks.war
-  discard-paths: yes
