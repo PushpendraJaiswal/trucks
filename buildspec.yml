@@ -1,14 +1,41 @@
 ---
 version: 0.2
 phases:
-  build:
+  install:
+    runtime-versions:
+      docker: 20
+  pre_build:
     commands:
-      - echo Build started on 'date'
-      - mvn clean package
-  post_build:
-    commands:
-      - echo Build completed on 'date'
+    - echo Building WAR file as on `date`
+    - mvn clean package
+    - echo Logging in to Amazon ECR....
+    - aws --version
+    # update the following line with your own region
+    #- $(aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 500208773665.dkr.ecr.us-east-1.amazonaws.com)
+    - $(aws ecr get-login --no-include-email --region us-east-1)
+    - COMMIT_HASH=trucks
+    - IMAGE_TAG=${COMMIT_HASH:=latest}
+    - REPOSITORY_URI=500208773665.dkr.ecr.us-east-1.amazonaws.com/trucks
 artifacts:
   files:
-    - target/trucks.war
+	- target/trucks.war
   discard-paths: yes
+  build:
+    commands:
+    - echo Build started on `date`
+    - echo Building the Docker image...
+    - echo $DOCKER_VERSION
+    - pwd
+    - whoami
+    # update the following line with the name of your own ECR repository
+    - docker build -t $REPOSITORY_URI:latest .
+    # update the following line with the URI of your own ECR repository (view the Push Commands in the console)
+    - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
+  post_build:
+    commands:
+    - echo Build completed on `date`
+    - echo pushing to repo
+    # update the following line with the URI of your own ECR repository
+    - docker push $REPOSITORY_URI:latest
+    - docker push $REPOSITORY_URI:$IMAGE_TAG
+    - echo Writing image definitions file...
