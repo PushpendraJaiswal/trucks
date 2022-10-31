@@ -19,6 +19,10 @@ phases:
     commands:
       - echo Building WAR file as on `date`
       - mvn clean package
+artifacts:
+  files:
+    - target/trucks.war
+  discard-paths: yes
   post_build:
     commands:
       - echo Building DOCKER image ....
@@ -28,7 +32,3 @@ phases:
       - echo Pushing IMAGE to ECR
       # docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
-artifacts:
-  files:
-    - target/trucks.war
-  discard-paths: yes
