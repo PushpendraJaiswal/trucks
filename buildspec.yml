@@ -19,7 +19,7 @@ phases:
     commands:
       - echo Building WAR file as on `date`
       - mvn clean package
-      - echo >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> $CODEBUILD_SRC_DIR
+      - echo $CODEBUILD_SRC_DIR
       - aws s3 cp $CODEBUILD_SRC_DIR/target/trucks.war arn:aws:s3:::artifact-trucks
     artifacts:
       files:
