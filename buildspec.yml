@@ -18,10 +18,7 @@ phases:
   build:
     commands:
       - echo Building WAR file as on `date`
-      - pwd
-      - ls
       - mvn clean package
-      - ls
   post_build:
     commands:
       - echo Building DOCKER image ....
