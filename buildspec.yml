@@ -19,10 +19,10 @@ phases:
     commands:
       - echo Building WAR file as on `date`
       - mvn clean package
-  artifacts:
-    files:
-      - target/trucks.war
-    discard-paths: yes
+    artifacts:
+      files:
+        - target/trucks.war
+      discard-paths: yes
   post_build:
     commands:
       - echo Building DOCKER image ....
