@@ -14,7 +14,7 @@ phases:
     - mvn clean package
     - echo Logging in to Amazon ECR...
     - aws --version
-    - $(aws ecr get-login --region "$AWS_REGION")
+    - $(aws ecr get-login --region us-east-1)
     - COMMIT_HASH=trucks
     - IMAGE_TAG=latest
     - REPOSITORY_URI=500208773665.dkr.ecr.us-east-1.amazonaws.com/$COMMIT_HASH
