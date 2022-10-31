@@ -22,6 +22,7 @@ phases:
     artifacts:
       files:
         - target/trucks.war
+      discard-paths: yes
   post_build:
     commands:
       - echo Building DOCKER image ....
@@ -36,3 +37,4 @@ phases:
 artifacts:
   files:
     - imageDetail.json
+  discard-paths: yes
