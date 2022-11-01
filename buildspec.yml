@@ -5,6 +5,7 @@ env:
     AWS_REGION: us-east-1
     COMMIT_HASH: trucks
     IMAGE_TAG: latest
+    AWS_ACCOUNT_ID: 500208773665
 phases:
   install:
     runtime-versions:
@@ -14,7 +15,7 @@ phases:
       - echo Logging in to Amazon ECR...
       - aws --version
       - $(aws ecr get-login --no-include-email --region us-east-1)
-      - REPOSITORY_URI=500208773665.dkr.ecr.us-east-1.amazonaws.com/$COMMIT_HASH
+      - REPOSITORY_URI=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$COMMIT_HASH
   build:
     commands:
       - echo Building WAR file as on `date`
