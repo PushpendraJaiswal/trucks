@@ -21,7 +21,7 @@ phases:
       - echo Building WAR file as on `date`
       - mvn clean package
       - echo MOVE THE WAR FILE TO S3
-      - aws s3 cp $CODEBUILD_SRC_DIR/target/trucks.war s3://artifact-trucks/
+      - aws s3 cp $CODEBUILD_SRC_DIR/target/trucks.war s3://artifact-trucks/trucks-pipeline/
   post_build:
     commands:
       - echo Building DOCKER image ....
