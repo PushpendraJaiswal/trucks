@@ -13,7 +13,6 @@ phases:
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
-      - aws --version
       - $(aws ecr get-login --no-include-email --region us-east-1)
       - REPOSITORY_URI=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$COMMIT_HASH
   build:
