@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
       - name: trucks-container
-        image: 500208773665.dkr.ecr.us-east-1.amazonaws.com/trucks:1.0
+        image: 500208773665.dkr.ecr.us-east-1.amazonaws.com/trucks:latest
         ports:
         - containerPort: 80
