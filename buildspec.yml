@@ -32,8 +32,8 @@ phases:
       - echo Writing image definitions file... 
       - printf '{"ImageURI":"%s"}' $REPOSITORY_URI:$IMAGE_TAG > imageDetail.json
       - echo Push the Latest Image to cluster ...
-      - kubectl apply -f deployment.yaml
-      - kubectl apply -f service.yaml
+      # kubectl apply -f deployment.yaml
+      # kubectl apply -f service.yaml
 artifacts:
   files:
     - imageDetail.json
